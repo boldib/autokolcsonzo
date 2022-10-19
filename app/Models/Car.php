@@ -13,6 +13,11 @@ class Car extends Model
     'user_id', 'name', 'slug', 'image', 'status', 'price'
   ];
 
+  public function user()
+  {
+    return $this->belongsTo(User::class);
+  }
+
   public function rental()
   {
     return $this->hasMany(Rental::class);
@@ -20,7 +25,7 @@ class Car extends Model
 
   public function image()
   {
-    $imageSource = ($this->image) ? $this->image : 'default.webp';
-    return '/storage/cars/' . $imageSource;
+    $imageSource = ($this->image) ? '/storage/cars/' . $this->image : '/default.webp';
+    return $imageSource;
   }
 }

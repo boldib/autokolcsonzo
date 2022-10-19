@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('slug');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->boolean('status');
             $table->string('price');
             $table->timestamps();

@@ -1,12 +1,13 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\Rental;
+
+use App\Models\Car;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class RentalSeeder extends Seeder
+class CarSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +16,6 @@ class RentalSeeder extends Seeder
      */
     public function run()
     {
-        Rental::factory()->times(10)->create();
+        Car::factory()->times(10)->create();
     }
 }

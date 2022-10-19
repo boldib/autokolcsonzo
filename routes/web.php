@@ -16,6 +16,7 @@ Route::group(['as' => 'admin.', 'middleware' => ['admin']], function () {
     Route::post('/admin/store',[CarController::class, 'store'])->name('car-store');
     Route::get('/admin/edit/{id}/{slug}', [CarController::class, 'edit'])->name('car-edit');
     Route::patch('/admin/update/{id}/{slug}', [CarController::class, 'update'])->name('car-update');
+    Route::delete('/admin/delete/{id}/{slug}', [CarController::class, 'delete'])->name('car-delete');
     Route::delete('/rental/delete/{id}', [RentalController::class, 'delete'])->name('delete');
 });
 

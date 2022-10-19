@@ -45,7 +45,14 @@ class CarController extends Controller
     {
         $car = $this->carRepository->findCar($id, $slug);
         $car = $this->carRepository->update($request, $car);
-        return redirect("/");
+        return redirect(route('admin.index'));
+    }
+
+    public function delete($id, $slug){
+        $car = $this->carRepository->findCar($id, $slug);
+        $car->rental()->delete();
+        $car->delete();
+        return redirect()->back();
     }
 
     public function datefinder(Request $request){

@@ -12,18 +12,19 @@
                     <div class="card bg-light p-2 m-2 border">
                         <div class="card-header">
                             <div class="row">
-                            <div class="col-8"><strong>{{$r->date_start}} - {{$r->date_end}}</strong></div> <div class="col text-right">Rental ID: #{{$r->id}}</div>
+                                <div class="col-8"><strong>{{$r->date_start}} - {{$r->date_end}}</strong></div>
+                                <div class="col text-right">Rental ID: #{{$r->id}}</div>
                             </div>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
                                     {{$r->car->name}}<br>
-                                    
+
                                 </div>
                                 <div class="row text-right m-2">
-                                    <form action="{{route('rental.delete', ['id' => $r->id])}}" method="post"> @csrf @method ('DELETE')<button class="btn bg-danger text-light mr-1" type="submit" name="action" value="delete" />Delete</button></form>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#RentalModal{{$r->id}}">
+                                    <form action="{{route('rental.delete', ['id' => $r->id])}}" method="post"> @csrf @method ('DELETE')<button class="btn btn-sm bg-danger text-light mr-1" type="submit" name="action" value="delete" />Delete</button></form>
+                                    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#RentalModal{{$r->id}}">
                                         More Details
                                     </button>
                                 </div>
@@ -79,7 +80,15 @@
                 </div>
                 <div class="p-4">
                     @foreach($cars->sortBy('name') as $car)
-                    <p>{{$car->name}} @if($car->status == 0) <span class="text-danger">(Inactive)</span> @endif <a href="{{route('admin.car-edit', ['id' => $car->id, 'slug' => $car->slug])}}">(edit)</a></p>
+                    <div class="row">
+                        <div class="col p-2">{{$car->name}} @if($car->status == 0) <span class="text-danger">(Inactive)</span> @endif</div>
+                        <div class="col-4 p-2">
+                            <div class="row">
+                            <span><form action="{{route('admin.car-delete', ['id' => $car->id, 'slug' => $car->slug])}}" method="post"> @csrf @method ('DELETE')<button class="btn btn-sm bg-danger text-light mr-1" type="submit" name="action" value="delete" />Delete</button></form></span>
+                                <span class="mr-1"><a class="btn btn-sm btn-primary" href="{{route('admin.car-edit', ['id' => $car->id, 'slug' => $car->slug])}}">Edit</a></span>
+                            </div>
+                        </div>
+                    </div>
                     @endforeach
                 </div>
             </div>

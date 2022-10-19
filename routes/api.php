@@ -22,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('cars', [ApiController::class, 'index']);
 Route::get('cars/bydate/{date_start}/{date_end}', [ApiController::class, 'getByDate']);
+Route::post('store/rental', [ApiController::class, 'storeRental']);

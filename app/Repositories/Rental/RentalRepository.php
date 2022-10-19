@@ -21,10 +21,10 @@ class RentalRepository implements RentalRepositoryInterface
         ]);
         return $data;
     }
-    
-    public function store(Request $request, $id){
-        $data = $this->validateRequest($request);
 
+    public function store(Request $request, $id)
+    {
+        $data = $this->validateRequest($request);
         $car = Car::find($id);
 
         $date = explode(" to ", $data['date']);
@@ -42,20 +42,21 @@ class RentalRepository implements RentalRepositoryInterface
 
         $rental = Rental::create([
             'car_id' => $car->id,
-			'name' => $data['name'],
+            'name' => $data['name'],
             'email' => $data['email'],
             'address' => $data['address'],
             'phone' => $data['phone'],
             'date_start' => $dateStart,
             'date_end' => $dateEnd,
             'price' => $price,
-		]);
+        ]);
 
-        session()->flash('msg', '<div class="alert alert-success p-4 m-4"><p>Your rental has been stored.</p><p>You can take the car from <strong>8:00 at '.$rental->date_start.' </strong><br> and bring it back before <strong>20:00 on '.$rental->date_end.'</strong><p>The full price of the service is: <strong>'.$price.' Ft</strong></p></div>');
+        session()->flash('msg', '<div class="alert alert-success p-4 m-4"><p>Your rental has been stored.</p><p>You can take the car from <strong>8:00 at ' . $rental->date_start . ' </strong><br> and bring it back before <strong>20:00 on ' . $rental->date_end . '</strong><p>The full price of the service is: <strong>' . $price . ' Ft</strong></p></div>');
         return $rental;
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         Rental::find($id)->delete();
     }
 }

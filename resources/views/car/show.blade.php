@@ -24,11 +24,17 @@
                 <div class="card-body">
                     <img style="width:100%;" src="{{$car->image()}}"></a>
                     <div class="row mt-4">
-                        <div class="col-3"><strong>Name:</strong></div>
+                        <div class="col"><strong>Name:</strong></div>
                         <div class="col-9">{{$car->name}}</div>
-                        <div class="col-3"><strong>Price:</strong></div>
+                        <div class="col"><strong>Price:</strong></div>
                         <div class="col-9">{{$car->price}} Ft (daily)</div>
                     </div>
+                    @if(isset($days))
+                    <div class="row mt-4">
+                        <div class="col"><strong>Full price:</strong></div>
+                        <div class="col-8">{{$car->price * $days}} Ft</div>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">Available cars on the selected date range:</div>
                 <div class="card-body">
-                    <x-carlist :cars="$cars"></x-menu>
+                    <x-carlist :cars="$cars" :days="$days"></x-menu>
                 </div>
             </div>
         </div>

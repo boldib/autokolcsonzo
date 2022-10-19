@@ -10,23 +10,27 @@ class CarController extends Controller
 {
 
     private CarRepositoryInterface $carRepository;
-    
+
     public function __construct(CarRepositoryInterface $carRepository)
     {
         $this->carRepository = $carRepository;
     }
 
-    public function index(){
+    public function index()
+    {
         $cars = Car::where('status', 1)->paginate(5);
         return view('welcome', compact('cars'));
     }
 
-    public function show($id, $slug){
+    public function show($id, $slug)
+    {
         $car = $this->carRepository->findCar($id, $slug);
-        return view('car.show', compact('car'));
+        $days = $this->carRepository->daysCount();
+        return view('car.show', compact('car', 'days'));
     }
 
-    public function create(){
+    public function create()
+    {
         return view('car.create');
     }
 
@@ -36,7 +40,8 @@ class CarController extends Controller
         return redirect("/");
     }
 
-    public function edit($id, $slug){
+    public function edit($id, $slug)
+    {
         $car = $this->carRepository->findCar($id, $slug);
         return view('car.edit', compact('car'));
     }
@@ -48,15 +53,18 @@ class CarController extends Controller
         return redirect(route('admin.index'));
     }
 
-    public function delete($id, $slug){
+    public function delete($id, $slug)
+    {
         $car = $this->carRepository->findCar($id, $slug);
         $car->rental()->delete();
         $car->delete();
         return redirect()->back();
     }
 
-    public function datefinder(Request $request){
-        $cars = $this->carRepository->datefinder($request);
-        return view('car.find', compact('cars'));
+    public function datefinder(Request $request)
+    {
+        $cars = $this->carRepository->dateFinder($request);
+        $days = $this->carRepository->daysCount();
+        return view('car.find', compact('cars', 'days'));
     }
 }

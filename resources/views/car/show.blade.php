@@ -6,7 +6,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-lg-8 mb-2">
             <div class="card">
                 <div class="card-header">{{$car->name}}</div>
                 <div class="card-body">
@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <div class="col-4">
+        <div class="col">
             <div class="card">
                 <div class="card-header">{{$car->name}}</div>
                 <div class="card-body">

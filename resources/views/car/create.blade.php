@@ -9,7 +9,7 @@
                 <div class="card-header">Create new Car item</div>
 
                 <div class="card-body">
-                    <form class="p-4" method="POST" action="{{ route('admin.store') }}" enctype="multipart/form-data">
+                    <form class="p-4" method="POST" action="{{ route('admin.car-store') }}" enctype="multipart/form-data">
                         @csrf
 
                         <!-- Name -->

@@ -12,10 +12,10 @@ Route::get('/', [CarController::class, 'index'])->name('index');
 
 Route::group(['as' => 'admin.', 'middleware' => ['admin']], function () {
     Route::get('/admin',[AdminController::class, 'index'])->name('index');
-    Route::get('/admin/create',[CarController::class, 'create'])->name('create');
-    Route::post('/admin/store',[CarController::class, 'store'])->name('store');
-    Route::get('/admin/edit/{id}/{slug}', [CarController::class, 'edit'])->name('edit');
-    Route::patch('/admin/update/{id}/{slug}', [CarController::class, 'update'])->name('update');
+    Route::get('/admin/create',[CarController::class, 'create'])->name('car-create');
+    Route::post('/admin/store',[CarController::class, 'store'])->name('car-store');
+    Route::get('/admin/edit/{id}/{slug}', [CarController::class, 'edit'])->name('car-edit');
+    Route::patch('/admin/update/{id}/{slug}', [CarController::class, 'update'])->name('car-update');
     Route::delete('/rental/delete/{id}', [RentalController::class, 'delete'])->name('delete');
 });
 

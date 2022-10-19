@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-lg-8 mb-2">
             <div class="card">
                 <div class="card-header">Rentals:</div>
                 <div class="card-body">
@@ -73,13 +73,13 @@
                     <div class="row">
                         <div class="col">Manage cars:</div>
                         <div class="col text-right">
-                            <a class="text-light bg-primary p-2" href="{{ route('admin.create')}}">Add new car</a>
+                            <a class="text-light bg-primary p-2" href="{{ route('admin.car-create')}}">Add new car</a>
                         </div>
                     </div>
                 </div>
                 <div class="p-4">
                     @foreach($cars->sortBy('name') as $car)
-                    <p>{{$car->name}} @if($car->status == 0) <span class="text-danger">(Inactive)</span> @endif <a href="{{route('admin.edit', ['id' => $car->id, 'slug' => $car->slug])}}">(edit)</a></p>
+                    <p>{{$car->name}} @if($car->status == 0) <span class="text-danger">(Inactive)</span> @endif <a href="{{route('admin.car-edit', ['id' => $car->id, 'slug' => $car->slug])}}">(edit)</a></p>
                     @endforeach
                 </div>
             </div>

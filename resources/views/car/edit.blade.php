@@ -9,7 +9,7 @@
                 <div class="card-header"><strong>Edit:</strong> {{$car->name}}</div>
 
                 <div class="card-body">
-                    <form class="p-4" method="POST" action="{{route('admin.update', ['id' => $car->id, 'slug' => $car->slug])}}" enctype="multipart/form-data">
+                    <form class="p-4" method="POST" action="{{route('admin.car-update', ['id' => $car->id, 'slug' => $car->slug])}}" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
 

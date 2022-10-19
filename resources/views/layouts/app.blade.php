@@ -40,9 +40,6 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
                 <div class="text-right">
                 @guest 
                     <span class="p-2"><a class="text-dark" href="/register">Register</a></span> <span class="p-2"><a class="text-dark" href="/login">Login</a></span>

@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-lg-8">
             <div class="card">
                 <div class="card-header">Available cars on the selected date range:</div>
                 <div class="card-body">
@@ -13,7 +13,7 @@
             </div>
         </div>
 
-        <div class="col-4">
+        <div class="col">
             <div class="card">
                 <div class="card-header mb-2">Find available cars by date:</div>
                 <div class="m-auto">

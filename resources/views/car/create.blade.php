@@ -14,7 +14,7 @@
 
                         <!-- Name -->
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label"><span>Car Name:</span> <span class="required"></span></label>
+                            <label for="name" class="col-md-4 col-form-label"><strong>Car Name:</strong><span class="required"></span></label>
 
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
@@ -27,10 +27,8 @@
 
                         <!-- Price -->
                         <div class="form-group row">
-                            <label for="price" class="col-md-4 col-form-label"><span>Daily Price:</span></label>
-
+                            <label for="price" class="col-md-4 col-form-label"><strong>Daily Price:</strong></label>
                             <input id="price" type="text" pattern="^[^,]+(?:,[^,]+){0,4}$" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" autocomplete="price" autofocus>
-
                             @error('price')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -39,26 +37,32 @@
                         </div>
 
                         <!-- Image -->
-                        <div class="row">
-                            <div class="col">
-                                <label for="image"><span>Image:</span></label>
-                                <input type="file" class="form-control-file mb-4" id="image" name="image" required>
+                        <div class="form-group row pt-2">
+                            <div class="col custom-file">
+                                <label class="custom-file-label" for="image"><span>Upload Image File</span></label>
+                                <input class="custom-file-input" type="file" id="image" name="image" required>
 
                                 @error('image')
                                 <strong>{{ $message }}</strong>
                                 @enderror
                             </div>
-                            <div class="col text-right">
-                                <!-- Status -->
-                                <label for="status" style="padding-top: 8px;padding-right: 10px;">Status:</label>
+                        </div>
 
-                                <select name="status" id="status">
-                                    <option value="1" selected>Active</option>
-                                    <option value="0">Inactive</option>
-                                </select>
+                        <div class="form-group pt-2">
+                            <div class="row">
+                                <!-- Status -->
+                                <div class="col-1 p-2 ">
+                                    <label for="status"><strong>Status:</strong></label>
+                                </div>
+
+                                <div class="col-3">
+                                    <select class="custom-select custom-select" name="status" id="status">
+                                        <option value="1" selected>Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
+                                </div>
 
                             </div>
-
                         </div>
 
 

@@ -81,12 +81,9 @@
                 <div class="p-4">
                     @foreach($cars->sortBy('name') as $car)
                     <div class="row">
-                        <div class="col p-2">{{$car->name}} @if($car->status == 0) <span class="text-danger">(Inactive)</span> @endif</div>
-                        <div class="col-4 p-2">
-                            <div class="row">
-                            <span><form action="{{route('admin.car-delete', ['id' => $car->id, 'slug' => $car->slug])}}" method="post"> @csrf @method ('DELETE')<button class="btn btn-sm bg-danger text-light mr-1" type="submit" name="action" value="delete" />Delete</button></form></span>
-                                <span class="mr-1"><a class="btn btn-sm btn-primary" href="{{route('admin.car-edit', ['id' => $car->id, 'slug' => $car->slug])}}">Edit</a></span>
-                            </div>
+                        <div class="col-sm-8 p-2">{{$car->name}} @if($car->status == 0) <span class="text-danger">(Inactive)</span> @endif</div>
+                        <div class="col p-2 text-right">
+                        <span class="mr-1 text-right"><a class="btn btn-sm btn-primary" href="{{route('admin.car-edit', ['id' => $car->id, 'slug' => $car->slug])}}">Edit</a></span>
                         </div>
                     </div>
                     @endforeach

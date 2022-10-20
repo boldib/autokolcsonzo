@@ -20,8 +20,8 @@ class RentalFactory extends Factory
      */
     public function definition()
     {
-        $date = Carbon::createFromTimeStamp($this->faker->dateTimeBetween('+10 days', '+40 days')->getTimestamp());
-        $daysBetween = rand(2, 30);
+        $date = Carbon::createFromTimeStamp($this->faker->dateTimeBetween('+1 days', '+80 days')->getTimestamp());
+        $daysBetween = rand(2, 15);
         $date_start = date('Y-m-d', strtotime($date));
         $date_end = date('Y-m-d', strtotime($date->addDays($daysBetween)));
 
@@ -31,7 +31,7 @@ class RentalFactory extends Factory
 
         $rentedCarIds = $rentals->pluck('car_id')->unique();
         $cars = Car::whereNotIn('id', $rentedCarIds)->where('status', 1)->get();
-        $car = $cars->first();
+        $car = $cars->random();
 
         $price = $daysBetween * $car->price;
         

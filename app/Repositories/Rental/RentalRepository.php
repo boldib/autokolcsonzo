@@ -25,7 +25,10 @@ class RentalRepository implements RentalRepositoryInterface
     public function store(Request $request, $id)
     {
         $data = $this->validateRequest($request);
-        $car = Car::find($id);
+
+        $car = Car::where('id', $id)
+            ->where('status', 1)
+            ->firstOrFail();
 
         $date = explode(" to ", $data['date']);
         $dateStart = $date[0];

@@ -15,6 +15,25 @@
     </div>
 </form>
 
+<?php
+
+if (isset($_GET['date'])) {
+    $dates = explode(' to ', $_GET['date']);
+
+    if (isset($dates[1])) {
+        $start = $dates[0];
+        $end = $dates[1];
+    } else {
+        $start = $dates[0];
+        $end = $start;
+    }
+} else {
+    $start = null;
+    $end = null;
+}
+
+?>
+
 <script>
     var fp = flatpickr(".date", {
         inline: true,
@@ -23,5 +42,6 @@
         maxDate: new Date().fp_incr(180),
         dateFormat: "Y-m-d",
         locale: "en",
+        <?php if($start != null) echo 'defaultDate: ["'.$start.'", "'.$end.'"],'?>
     })
 </script>

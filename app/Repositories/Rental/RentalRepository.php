@@ -11,7 +11,7 @@ class RentalRepository implements RentalRepositoryInterface
 {
     public function validateRequest(Request $request)
     {
-        $data = request()->validate([
+        return $request->validate([
             'name' => 'required',
             'email' => ['string', 'email', 'max:255'],
             'address' => 'required',
@@ -19,7 +19,6 @@ class RentalRepository implements RentalRepositoryInterface
             'date' => 'required',
             'price' => 'max:500',
         ]);
-        return $data;
     }
 
     public function store(Request $request, $id)

@@ -14,13 +14,12 @@ class CarRepository implements CarRepositoryInterface
 {
     public function validateRequest($request)
     {
-        $data = request()->validate([
+        return $request->validate([
             'name' => 'required',
-            'price' => 'required|numeric',
+            'price' => 'required|numeric|gt:0',
             'image' => 'nullable|image|max:2048',
             'status' => 'boolean',
         ]);
-        return $data;
     }
 
     public function store($request)

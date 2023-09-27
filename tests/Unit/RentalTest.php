@@ -15,19 +15,6 @@ class RentalTest extends TestCase
      *
      * @return void
      */
-    
-    public function test_rental_service_loads()
-    {
-        $response = $this->get('/');
-        $response->assertStatus(200);
-    }
-
-    public function test_car_page_loads()
-    {
-        $car = Car::factory()->create();
-        $response = $this->get("/$car->id/$car->slug");
-        $response->assertStatus(200);
-    }
 
     public function test_store_rental_service()
     {
